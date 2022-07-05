@@ -67,7 +67,8 @@ public class Validar extends HttpServlet {
             em=edao.validar(user, pass);
             if (em.getUser()!=null) {
                 request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
-            } else {
+            } else { //AGREGA UN EXPECTION QUE SE MUESTRE EN LA CONSOLA
+                //y un mensaje de error acá, se supone que es cuando no encuentra un user.
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
