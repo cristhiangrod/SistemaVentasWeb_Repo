@@ -17,12 +17,14 @@ public class Conexion {
     String user="root";
     String pass="root";
     
-    
+    //Investiga, debe haber alguna clase que agarre el url de forma dinamica
+    //esto servirá cuando se pase al host
     public Connection Conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
+            //AGREGA EXPECTION
         }
         return con;
     }
