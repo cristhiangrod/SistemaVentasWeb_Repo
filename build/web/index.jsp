@@ -16,7 +16,7 @@
         <div class="container mt-4 col-lg-4">
             <div class="card col-sm-10">
                 <div class="card-body">
-                    <form class="form-sign" action="Validar" method="POST">
+                    <form class="form-sign" method="POST" action="Validar">
                         <div class="form-group text-center">
                             <h3>Login</h3>
                             <img src="img/CNTECSOLlogo.png" alt="70" width="170"/>

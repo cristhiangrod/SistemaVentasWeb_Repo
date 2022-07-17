@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  *
  * @author CristhianACER
  */
-public class EmpleadoDAO {
+public class UsuarioDAO {
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
@@ -22,22 +22,23 @@ public class EmpleadoDAO {
     //Para validar se debe crear un store procedure que retorne el user
     //es decir, la consulta se debe limitar a una fila
     //
-    public Empleado validar(String user, String dni){
-        Empleado em=new Empleado();
-        String sql="select*from empleado where User=? and Dni=?"; //esto no irá mas con el SP
+    public Usuario validar(String user, String password){
+        Usuario em=new Usuario();
+        String sql="select*from usuario where User=? and Password=?"; //esto no irá mas con el SP
         try {
             con=cn.Conexion();
             ps=con.prepareStatement(sql);
             ps.setString(1, user);
-            ps.setString(2, dni);
+            ps.setString(2, password);
             rs=ps.executeQuery();
             while (rs.next()){//No hay necesidad de un while, solo compara los valores que retornan del SQL con los ingresados desde la UI
-                em.setId(rs.getInt("IdEmpleado"));
-                em.setUser(rs.getString("User"));
-                em.setDni(rs.getString("Dni"));
-                em.setNom(rs.getString("Nombres"));
+                em.setIdUsuario(rs.getInt("IdUsuario"));
+                em.setUsuario(rs.getString("User"));
+                em.setPassword(rs.getString("Password"));
+                em.setNombreUsuario(rs.getString("NombreUsuario"));
             }
-        } catch (Exception e) { //AGREGA UNA EXPECTION QUE SE MUESTRE EN LA CONSOLA, AYUDARÁ CUANDO HAYA ERRORES
+        } catch (Exception e) { 
+            System.out.println(e);
         }
         return em;
     }

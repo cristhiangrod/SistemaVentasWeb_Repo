@@ -4,8 +4,8 @@
  */
 package Controlador;
 
-import Modelo.Empleado;
-import Modelo.EmpleadoDAO;
+import Modelo.Usuario;
+import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Validar extends HttpServlet {
     
-    EmpleadoDAO edao=new EmpleadoDAO();
-    Empleado em=new Empleado();
+    UsuarioDAO udao=new UsuarioDAO();
+    Usuario usu=new Usuario();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -64,13 +64,18 @@ public class Validar extends HttpServlet {
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user=request.getParameter("txtUser");
             String pass=request.getParameter("txtPass");
-            em=edao.validar(user, pass);
-            if (em.getUser()!=null) {
-                request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
+            usu=udao.validar(user, pass);
+            try {
+                if (usu.getUsuario()!=null) {
+                request.getRequestDispatcher("Controlador?accion=Principal.jsp").forward(request, response);
             } else { //AGREGA UN EXPECTION QUE SE MUESTRE EN LA CONSOLA
                 //y un mensaje de error acá, se supone que es cuando no encuentra un user.
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
