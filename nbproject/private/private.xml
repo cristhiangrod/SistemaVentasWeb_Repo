@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/src/java/config/Conexion.java</file>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/src/java/Modelo/Usuario.java</file>
+            <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/src/java/Modelo/UsuarioDAO.java</file>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/src/java/Controlador/Validar.java</file>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/web/index.jsp</file>
-            <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/nbproject/private/private.properties</file>
+            <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/web/Principal.jsp</file>
             <file>file:/C:/Users/CristhianACER/Documents/NetBeansProjects/SistemaVentasWeb/src/java/Controlador/Controlador.java</file>
         </group>
     </open-files>

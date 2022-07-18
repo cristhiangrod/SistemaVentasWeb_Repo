@@ -23,8 +23,8 @@ public class UsuarioDAO {
     //es decir, la consulta se debe limitar a una fila
     //
     public Usuario validar(String user, String password){
-        Usuario em=new Usuario();
-        String sql="select*from usuario where User=? and Password=?"; //esto no irá mas con el SP
+        Usuario us=new Usuario();//esto no irá mas con el SP
+        String sql="SELECT * FROM usuario WHERE User=? and Password=?;";
         try {
             con=cn.Conexion();
             ps=con.prepareStatement(sql);
@@ -32,14 +32,14 @@ public class UsuarioDAO {
             ps.setString(2, password);
             rs=ps.executeQuery();
             while (rs.next()){//No hay necesidad de un while, solo compara los valores que retornan del SQL con los ingresados desde la UI
-                em.setIdUsuario(rs.getInt("IdUsuario"));
-                em.setUsuario(rs.getString("User"));
-                em.setPassword(rs.getString("Password"));
-                em.setNombreUsuario(rs.getString("NombreUsuario"));
+                //us.setIdUsuario(rs.getInt("IdUsuario"));
+                us.setUsuario(rs.getString("User"));
+                us.setPassword(rs.getString("Password"));
+                //us.setNombreUsuario(rs.getString("NombreUsuario"));
             }
         } catch (Exception e) { 
             System.out.println(e);
         }
-        return em;
+        return us;
     }
 }

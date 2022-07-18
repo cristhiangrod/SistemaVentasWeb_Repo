@@ -10,15 +10,26 @@ package Modelo;
  */
 public class Usuario {
     int idUsuario;
-    String usuario; //Se usará como password del user
+    String usuario;
     String password;
     String nombreUsuario;
     String apellidosUsuario;
     String telefonoUsuario;
     String estado;
-    
-    //Consultor
 
+    public Usuario() {
+    }
+
+    public Usuario(int idUsuario, String usuario, String password, String nombreUsuario, String apellidosUsuario, String telefonoUsuario, String estado) {
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
+        this.password = password;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidosUsuario = apellidosUsuario;
+        this.telefonoUsuario = telefonoUsuario;
+        this.estado = estado;
+    }
+    
     public int getIdUsuario() {
         return idUsuario;
     }

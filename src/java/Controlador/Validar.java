@@ -25,17 +25,23 @@ public class Validar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Validar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String accion=request.getParameter("accion");
+        if (accion.equals("Ingresar")) {
+            String user=request.getParameter("txtUser");
+            String pass=request.getParameter("txtPass");
+            usu.setUsuario(user);
+            usu.setPassword(pass);
+            usu=udao.validar(user, pass);
+            try {
+                if (usu.getUsuario()!=null) {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("Principal.jsp").forward(request, response);
+                }
+            } catch (Exception e) {
+                System.out.println("Controlador.Validar.processRequest()");
+            }
         }
     }
 
@@ -60,25 +66,6 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        String accion=request.getParameter("accion");
-        if (accion.equalsIgnoreCase("Ingresar")) {
-            String user=request.getParameter("txtUser");
-            String pass=request.getParameter("txtPass");
-            usu=udao.validar(user, pass);
-            try {
-                if (usu.getUsuario()!=null) {
-                request.getRequestDispatcher("Controlador?accion=Principal.jsp").forward(request, response);
-            } else { //AGREGA UN EXPECTION QUE SE MUESTRE EN LA CONSOLA
-                //y un mensaje de error acá, se supone que es cuando no encuentra un user.
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-            
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
     }
 
     

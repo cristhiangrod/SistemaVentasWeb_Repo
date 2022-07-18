@@ -30,7 +30,9 @@ public class Conexion {
             throw new SQLException(ex);
          } catch (ClassNotFoundException ex) {
             throw new ClassCastException(ex.getMessage());
-         }
+         } catch (Exception ex) {
+            System.out.println("Error desconocido: "+ex);
+        }
         return con;
     }
    
